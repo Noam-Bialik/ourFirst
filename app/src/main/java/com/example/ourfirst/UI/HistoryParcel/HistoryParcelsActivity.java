@@ -16,17 +16,7 @@ public class HistoryParcelsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history_parcels);
-        Button Back =(Button)findViewById(R.id.Back);
-        Back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                goBack();
-            }
-        });
-    }
-    public void goBack()
-    {
-        startActivity(new Intent(this, MainActivity.class));
-    }
 
+
+    }
 }

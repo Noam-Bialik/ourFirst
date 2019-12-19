@@ -18,6 +18,7 @@
             android:layout_height="wrap_content"
             android:text ="parcel type"/>
         <EditText
+            android:id="@+id/Type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint=" 1 / 2 / 3"
@@ -33,6 +34,7 @@
             android:layout_height="wrap_content"
             android:text="breakable " />
         <EditText
+            android:id="@+id/Breakable"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint=" 0 / 1"/>
@@ -47,6 +49,7 @@
             android:layout_height="wrap_content"
             android:text ="weight"/>
         <EditText
+            android:id="@+id/Weight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Enter the weight"
@@ -62,6 +65,7 @@
             android:layout_height="wrap_content"
             android:text ="To name : "/>
         <EditText
+            android:id="@+id/ToName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Enter toName here."
@@ -77,6 +81,7 @@
             android:layout_height="wrap_content"
             android:text="storage location : "/>
         <EditText
+            android:id="@+id/StorageLocation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Enter storageLocation here."/>
@@ -90,6 +95,7 @@
         android:layout_height="wrap_content"
         android:text ="destenation location : "/>
     <EditText
+        android:id="@+id/DestenationLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Enter toLocation here."/>
@@ -104,6 +110,7 @@
             android:layout_height="wrap_content"
             android:text ="when the percal was send "/>
         <EditText
+            android:id="@+id/SendDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Enter sendDate here in format dd/mm/yyyy."
@@ -117,11 +124,12 @@
         <TextView
             android:layout_width="180dp"
             android:layout_height="wrap_content"
-            android:text ="reciviedData : "/>
+            android:text ="reciviedDate : "/>
         <EditText
+            android:id="@+id/RecivedDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Enter reciviedData here in format dd/mm/yyyy."
+            android:hint="Enter reciviedDate here in format dd/mm/yyyy."
             android:inputType="datetime"/>
 
     </LinearLayout>
@@ -134,6 +142,7 @@
             android:layout_height="wrap_content"
             android:text ="destenation phone number : "/>
         <EditText
+            android:id="@+id/PhoneNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Enter toPhoneNumber here."
@@ -149,6 +158,7 @@
             android:layout_height="wrap_content"
             android:text ="destenation mail : "/>
         <EditText
+            android:id="@+id/DdestenationMail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Enter toMail here."
@@ -164,6 +174,7 @@
             android:layout_height="wrap_content"
             android:text ="deliver name : "/>
         <EditText
+            android:id="@+id/DeliverName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Enter deliverName here."/>
@@ -176,8 +187,9 @@
         <TextView
             android:layout_width="180dp"
             android:layout_height="wrap_content"
-            android:text ="parcelStatus : "/>
+            android:text ="parcel Status : "/>
         <EditText
+            android:id="@+id/ParcelStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Enter parcelStatus here  ."
@@ -188,10 +200,6 @@
         android:id="@+id/finishAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="finishAdd"/>
-    <Button
-        android:id="@+id/Back"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Back"/>
+        android:text="finishAdd"
+        />
 </LinearLayout>
