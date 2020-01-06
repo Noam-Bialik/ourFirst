@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FFFF00">
 
     <TextView
         android:layout_width="wrap_content"
@@ -17,12 +18,27 @@
             android:layout_width="180dp"
             android:layout_height="wrap_content"
             android:text ="parcel type"/>
-        <EditText
+        <RadioGroup
             android:id="@+id/Type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint=" 1 / 2 / 3"
-            android:inputType=""/>
+            android:orientation="vertical">
+            <RadioButton android:id="@+id/Envelope"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Envelope"
+                android:textSize="10dp"/>
+            <RadioButton android:id="@+id/SmallPKJ"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10dp"
+                android:text="SmallPKJ"/>
+            <RadioButton android:id="@+id/BidPKJ"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10dp"
+                android:text="BigPKJ"/>
+        </RadioGroup>
     </LinearLayout>>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -33,11 +49,22 @@
             android:layout_width="180dp"
             android:layout_height="wrap_content"
             android:text="breakable " />
-        <EditText
+        <RadioGroup
             android:id="@+id/Breakable"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint=" 0 / 1"/>
+            android:orientation="horizontal">
+            <RadioButton android:id="@+id/Yes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yes"
+                android:textSize="20dp"/>
+            <RadioButton android:id="@+id/No"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="No"/>
+        </RadioGroup>
 
     </LinearLayout>
     <LinearLayout
@@ -48,12 +75,33 @@
             android:layout_width="180dp"
             android:layout_height="wrap_content"
             android:text ="weight"/>
-        <EditText
+        <RadioGroup
             android:id="@+id/Weight"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter the weight"
-            android:inputType="number"/>
+            android:orientation="vertical">
+            <RadioButton android:id="@+id/U500G"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="U500G"
+                android:textSize="10dp"/>
+            <RadioButton android:id="@+id/UKG"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10dp"
+                android:text="UKG"/>
+            <RadioButton android:id="@+id/U5KG"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10dp"
+                android:text="U5KG"/>
+            <RadioButton android:id="@+id/U20KG"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10dp"
+                android:text="U20KG"/>
+        </RadioGroup>
+
 
     </LinearLayout>
     <LinearLayout
@@ -79,60 +127,16 @@
         <TextView
             android:layout_width="180dp"
             android:layout_height="wrap_content"
-            android:text="storage location : "/>
+            android:text ="destenation location : "/>
         <EditText
-            android:id="@+id/StorageLocation"
+            android:id="@+id/DestenationLocation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Enter storageLocation here."/>
-
-    </LinearLayout> <LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-    <TextView
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:text ="destenation location : "/>
-    <EditText
-        android:id="@+id/DestenationLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Enter toLocation here."/>
-
-</LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:text ="when the percal was send "/>
-        <EditText
-            android:id="@+id/SendDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="Enter sendDate here in format dd/mm/yyyy."
-            android:inputType="datetime"/>
+            android:hint="Enter toLocation here."/>
 
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:text ="reciviedDate : "/>
-        <EditText
-            android:id="@+id/RecivedDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="Enter reciviedDate here in format dd/mm/yyyy."
-            android:inputType="datetime"/>
 
-    </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -165,41 +169,12 @@
             android:inputType="textEmailAddress"/>
 
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:text ="deliver name : "/>
-        <EditText
-            android:id="@+id/DeliverName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="Enter deliverName here."/>
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:text ="parcel Status : "/>
-        <EditText
-            android:id="@+id/ParcelStatus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="Enter parcelStatus here  ."
-            />
-    </LinearLayout>
 
     <Button
         android:id="@+id/finishAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#29b6f6"
         android:text="finishAdd"
         />
 </LinearLayout>
