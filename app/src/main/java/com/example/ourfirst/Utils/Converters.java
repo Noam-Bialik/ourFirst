@@ -1,15 +1,10 @@
 package com.example.ourfirst.Utils;
 
 import android.location.Location;
-
 import androidx.room.TypeConverter;
-
-
 import com.example.ourfirst.Entities.Enumes;
-
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
 
 public class Converters {
     @TypeConverter
@@ -19,7 +14,13 @@ public class Converters {
 
     @TypeConverter
     public String dateToDatabase(SimpleDateFormat date) {
-        return date == null ? null : date.toString();
+        if (date != null)
+        {
+                Calendar cal = Calendar.getInstance();
+                return date.format(cal.getTime());
+
+        }
+    return null;
     }
 
     @TypeConverter
@@ -57,7 +58,7 @@ public class Converters {
         if (location==null)
             return null;
         String str;
-        str=Location.convert(location.getLatitude(),1)+Location.convert(location.getLongitude(),1);
+        str=Location.convert(location.getLatitude(),Location.FORMAT_DEGREES)+" "+Location.convert(location.getLongitude(),Location.FORMAT_DEGREES);
         return str;
     }
 

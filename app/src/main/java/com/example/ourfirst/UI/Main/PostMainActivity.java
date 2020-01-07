@@ -6,10 +6,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.ourfirst.R;
 import com.example.ourfirst.UI.AddParcel.AddParcelActivity;
 import com.example.ourfirst.UI.HistoryParcels.HistoryParcelsActivity;
+
 
 public class PostMainActivity extends AppCompatActivity {
     @Override
@@ -24,7 +24,6 @@ public class PostMainActivity extends AppCompatActivity {
                 gotoAddParcel();
             }
         });
-
 
         Button historyParcels = (Button) findViewById(R.id.HistoryParcel);
         historyParcels.setOnClickListener(new OnClickListener() {

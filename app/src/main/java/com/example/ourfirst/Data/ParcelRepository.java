@@ -1,61 +1,44 @@
 package com.example.ourfirst.Data;
 
 import android.app.Application;
-
 import androidx.lifecycle.MutableLiveData;
-import androidx.room.Room;
-
-import com.example.ourfirst.Data.HistoryDataSource.HistoryDataSource;
-import com.example.ourfirst.Data.HistoryDataSource.HistoryDataSourceDAO;
+import com.example.ourfirst.Data.HistoryParcelRoom.HistoryDataSource;
+import com.example.ourfirst.Data.HistoryParcelRoom.HistoryDataSourceDAO;
 import com.example.ourfirst.Entities.Parcel;
-
-import java.util.List;
+import java.util.ArrayList;
 
 public class ParcelRepository {
+    private static  ParcelRepository ourInstance;
 
     private HistoryDataSource historyDataSource;
     private HistoryDataSourceDAO historyDataSourceDAO;
-    private MutableLiveData<List<Parcel>> parcels;
+    private MutableLiveData<ArrayList<Parcel>> parcels;
+
+   public static ParcelRepository getInstance(Application application) {
+        if (ourInstance==null)
+        ourInstance=new ParcelRepository(application);
+      return ourInstance;
+    }
 
     public ParcelRepository(Application application) {
-        historyDataSource = Room.databaseBuilder(application, HistoryDataSource.class, "some name").allowMainThreadQueries().build();
+        historyDataSource = HistoryDataSource.getInstance(application.getApplicationContext());
         historyDataSourceDAO = historyDataSource.historyDataSourceDAO();
-        historyDataSource = Room.databaseBuilder(application.getApplicationContext(), HistoryDataSource.class, "Parcels").build();
-        parcels=new MutableLiveData<List<Parcel>>();
+        parcels = new MutableLiveData<ArrayList<Parcel>>();
     }
 
     public void addParcel(Parcel parcel) {
         historyDataSourceDAO.addParcel(parcel);
+        parcels.postValue((ArrayList<Parcel>) historyDataSourceDAO.getAllParcelsThat());
     }
 
-    public MutableLiveData<List<Parcel>> getAllParcelsThat() {
-        parcels.getValue();
-        //parcels= (MutableLiveData<List<Parcel>>) historyDataSourceDAO.getAllParcelsThat("WAITING");
+
+
+
+    public MutableLiveData<ArrayList<Parcel>> getAllParcelsThat() {
+        parcels.postValue((ArrayList<Parcel>) historyDataSourceDAO.getAllParcelsThat());
         return parcels;
     }
 }
-/*
-    private static class AddParcelAsyncTask extends AsyncTask<Parcel,Void ,Void>
-    {
-        private HistoryDataSourceDAO historyDataSourceDAO;
-        private AddParcelAsyncTask(HistoryDataSourceDAO historyDataSourceDAO)
-        {
-            this.historyDataSourceDAO=historyDataSourceDAO;
-        }
-        @Override
-        protected Void doInBackground(Parcel... parcels) {
-            historyDataSourceDAO.addParcel(parcels[0]);
-            return null;
-        }
-    }
-    public void addParcel(Parcel parcel)
-    {
-        new AddParcelAsyncTask(historyDataSourceDAO).execute(parcel);
-    }
-    public LiveData<List<Parcel>> getAllRecivedParcels()
-    {
-        return allRecivedParcel;
-    }
-}*/
+
 
 

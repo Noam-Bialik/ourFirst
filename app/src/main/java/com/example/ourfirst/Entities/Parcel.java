@@ -6,11 +6,13 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.text.SimpleDateFormat;
+
 @Entity(tableName = "Parcels")
 public class Parcel {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @NonNull
-    private int ID ;
+    private int ID;
     private Enumes.ParcelType parcelType;
     private Boolean breakable;
     private Enumes.Weight weight;
@@ -19,18 +21,17 @@ public class Parcel {
     private Location toLocation;
     private String toPhoneNumber;
     private String toMail;
-    private String sendDate;
+    private SimpleDateFormat sendDate;
 
-
-    private String reciviedDate;
+    private SimpleDateFormat reciviedDate;
     private Enumes.ParcelStatus parcelStatus;
     private String deliverName;
     private String idStorage;
 
-    public Parcel(){};
+    public Parcel() {
+    }
 
-    public Parcel(String idStorage, Enumes.ParcelType parcelType, Boolean breakable, Enumes.Weight weight, String storageLocation, String toName, Location toLocation, String toPhoneNumber, String toMail, String sendDate, String reciviedDate, Enumes.ParcelStatus parcelStatus, String deliverName) {
-        this.idStorage=idStorage;
+    public Parcel(Enumes.ParcelType parcelType, Boolean breakable, Enumes.Weight weight, String storageLocation, String toName, Location toLocation, String toPhoneNumber, String toMail, SimpleDateFormat sendDate, SimpleDateFormat reciviedDate, Enumes.ParcelStatus parcelStatus, String deliverName, String idStorage) {
         this.parcelType = parcelType;
         this.breakable = breakable;
         this.weight = weight;
@@ -43,18 +44,13 @@ public class Parcel {
         this.reciviedDate = reciviedDate;
         this.parcelStatus = parcelStatus;
         this.deliverName = deliverName;
-    }
-
-    public String getIdStorage() {
-        return idStorage;
-    }
-    public void setIdStorage(String idStorage) {
         this.idStorage = idStorage;
     }
 
     public int getID() {
         return ID;
     }
+
     public void setID(int ID) {
         this.ID = ID;
     }
@@ -62,6 +58,7 @@ public class Parcel {
     public Enumes.ParcelType getParcelType() {
         return parcelType;
     }
+
     public void setParcelType(Enumes.ParcelType parcelType) {
         this.parcelType = parcelType;
     }
@@ -69,6 +66,7 @@ public class Parcel {
     public Boolean getBreakable() {
         return breakable;
     }
+
     public void setBreakable(Boolean breakable) {
         this.breakable = breakable;
     }
@@ -76,6 +74,7 @@ public class Parcel {
     public Enumes.Weight getWeight() {
         return weight;
     }
+
     public void setWeight(Enumes.Weight weight) {
         this.weight = weight;
     }
@@ -83,6 +82,7 @@ public class Parcel {
     public String getStorageLocation() {
         return storageLocation;
     }
+
     public void setStorageLocation(String storageLocation) {
         this.storageLocation = storageLocation;
     }
@@ -90,6 +90,7 @@ public class Parcel {
     public String getToName() {
         return toName;
     }
+
     public void setToName(String toName) {
         this.toName = toName;
     }
@@ -97,6 +98,7 @@ public class Parcel {
     public Location getToLocation() {
         return toLocation;
     }
+
     public void setToLocation(Location toLocation) {
         this.toLocation = toLocation;
     }
@@ -104,6 +106,7 @@ public class Parcel {
     public String getToPhoneNumber() {
         return toPhoneNumber;
     }
+
     public void setToPhoneNumber(String toPhoneNumber) {
         this.toPhoneNumber = toPhoneNumber;
     }
@@ -111,22 +114,24 @@ public class Parcel {
     public String getToMail() {
         return toMail;
     }
+
     public void setToMail(String toMail) {
         this.toMail = toMail;
     }
 
-    public String getSendDate() {
+    public SimpleDateFormat getSendDate() {
         return sendDate;
     }
 
-    public void setSendDate(String sendDate) {
+    public void setSendDate(SimpleDateFormat sendDate) {
         this.sendDate = sendDate;
     }
 
+    public SimpleDateFormat getReciviedDate() {
+        return reciviedDate;
+    }
 
-    public String getReciviedDate() { return reciviedDate; }
-
-    public void setReciviedDate(String reciviedDate) {
+    public void setReciviedDate(SimpleDateFormat reciviedDate) {
         this.reciviedDate = reciviedDate;
     }
 
@@ -144,5 +149,13 @@ public class Parcel {
 
     public void setDeliverName(String deliverName) {
         this.deliverName = deliverName;
+    }
+
+    public String getIdStorage() {
+        return idStorage;
+    }
+
+    public void setIdStorage(String idStorage) {
+        this.idStorage = idStorage;
     }
 }

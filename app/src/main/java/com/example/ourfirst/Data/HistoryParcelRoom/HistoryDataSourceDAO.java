@@ -1,12 +1,11 @@
-package com.example.ourfirst.Data.HistoryDataSource;
+package com.example.ourfirst.Data.HistoryParcelRoom;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
-
 import com.example.ourfirst.Entities.Parcel;
-
 import java.util.List;
 
 @Dao
@@ -17,7 +16,10 @@ public interface HistoryDataSourceDAO {
     @Update
      void updateParccel(Parcel parcel);
 
-    @Query("SELECT * FROM parcels WHERE parcelStatus=:Situation ")
-    List<Parcel> getAllParcelsThat(String Situation);
+    @Delete
+    void removeParcel(Parcel parcel);
+
+    @Query("SELECT * FROM parcels")
+    List<Parcel> getAllParcelsThat();
 
 }
