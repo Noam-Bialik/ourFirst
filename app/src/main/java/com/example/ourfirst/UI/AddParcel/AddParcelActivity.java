@@ -1,42 +1,48 @@
 package com.example.ourfirst.UI.AddParcel;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.ourfirst.Data.ParcelRepository;
-import com.example.ourfirst.Entities.Enumes;
-import com.example.ourfirst.Entities.Parcel;
-import com.example.ourfirst.R;
-import com.example.ourfirst.Utils.GPService;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import com.example.ourfirst.R;
 
 public class AddParcelActivity extends AppCompatActivity {
-    ParcelRepository parcelRepository;
+    AddParcelViewModel addParcelViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_parcel2);
+        setContentView(R.layout.activity_add_parcel);
 
     }
     public void Add(View view) {
+        int parcelType;
+        int breakable;
+        int weight ;
+        String toName;
+        String toLocation;
+        String toPhoneNumber;
+        String toMail;
         try {
+            parcelType = ((RadioGroup) findViewById(R.id.Type)).indexOfChild(findViewById(((RadioGroup) findViewById(R.id.Type)).getCheckedRadioButtonId()));
+            breakable = ((RadioGroup) findViewById(R.id.Breakable)).indexOfChild(findViewById(((RadioGroup) findViewById(R.id.Breakable)).getCheckedRadioButtonId()));
+            weight = ((RadioGroup) findViewById(R.id.Weight)).indexOfChild(findViewById(((RadioGroup) findViewById(R.id.Weight)).getCheckedRadioButtonId()));
+            toName = ((EditText) findViewById(R.id.ToName)).getText().toString();
+            toLocation = ((EditText) findViewById(R.id.DestenationLocation)).getText().toString();
+            toPhoneNumber = ((EditText) findViewById(R.id.PhoneNumber)).getText().toString();
+            toMail = ((EditText) findViewById(R.id.DdestenationMail)).getText().toString();
+
             final String storageLocation = getIntent().getStringExtra("StorageLocation");
             final String idStorage = getIntent().getStringExtra("ID");
-            parcelRepository= ParcelRepository.getInstance(getApplication());
-            Date d=new Date();
-            SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
-            date.set2DigitYearStart(d);
-            Parcel parcel = new Parcel(Enumes.ParcelType.SMALLPKJ,true, Enumes.Weight.U500G,storageLocation,"nave", GPService.getLocationFromAddress("הועד הלאומי 21",getApplicationContext()),"0528616878","navesarussi@gmail.com",date,date, Enumes.ParcelStatus.WAITING,"",idStorage);
-            parcelRepository.addParcel(parcel);
+            addParcelViewModel=new AddParcelViewModel(getApplication());
+            addParcelViewModel.verifyData(idStorage, parcelType, breakable, weight, storageLocation, toName, toLocation, toPhoneNumber, toMail);
             Toast.makeText(AddParcelActivity.this,"Parcel added successfully", Toast.LENGTH_SHORT).show();
         }
         catch (Exception e)
         {
-            Log.i("EXE",e.getMessage());
+            Toast.makeText(AddParcelActivity.this,e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 }

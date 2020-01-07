@@ -8,8 +8,11 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter percal fields"
-        android:gravity="center"/>
+        android:text="Enter parcel details"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:textStyle="bold"/>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -132,7 +135,8 @@
             android:id="@+id/DestenationLocation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Enter toLocation here."/>
+            android:hint="Enter toLocation here."
+            android:inputType="text"/>
 
     </LinearLayout>
 
@@ -176,5 +180,6 @@
         android:layout_height="wrap_content"
         android:background="#29b6f6"
         android:text="finishAdd"
+        android:onClick="Add"
         />
 </LinearLayout>

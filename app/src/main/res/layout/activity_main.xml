@@ -2,32 +2,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FFFF00"
-    >
-
+    android:background="#FFFF00">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:text="Hello , Please enter a location and id number of the storage"
+        android:text="Please enter the ID number and address of the warehouse"
         android:textAlignment="center"
         android:textSize="20sp"
-        />
-
+        android:textStyle="bold"/>
     <EditText
-        android:id="@+id/storageLocation"
+        android:id="@+id/warehouseLocation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter Storage Location"
+        android:hint="Enter warehouse address"
         />
-
-
     <EditText
-        android:id="@+id/idStorage"
+        android:id="@+id/warehouseID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter ID Storage"
+        android:hint="Enter warehouse ID"
         android:inputType="phone" />
 
     <LinearLayout
@@ -35,9 +30,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="15dp"
-        >
-
+        android:padding="15dp">
         <Button
             android:id="@+id/Store"
             android:layout_width="wrap_content"
@@ -47,8 +40,6 @@
             android:text="Store and continue"
             android:textColor="#fafafa"
             />
-
-
     </LinearLayout>
 
 </LinearLayout>

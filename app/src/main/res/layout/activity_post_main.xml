@@ -6,14 +6,14 @@
 
     <TextView
         android:id="@+id/Hello"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginRight="50dp"
+        android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="hello what you want   if you want update location or Id do bake"
-        android:textSize="30dp" />
+        android:text="Hello,\nchoose the action you want.\n
+If you want to change warehouse information, click 'Back' "
+        android:textSize="30dp"
+        android:textStyle="bold"/>
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -32,12 +32,13 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="150dp"
             android:layout_marginRight="250dp"
-            android:layout_marginBottom="150dp"
+            android:layout_marginBottom="100dp"
             android:background="#29b6f6"
-            android:text="Add Parcel" />
+            android:text="Add Parcel"
+            android:onClick="gotoAddParcel"/>
 
         <Button
-            android:id="@+id/HistoryParcel"
+            android:id="@+id/HistoryParcels"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -46,9 +47,11 @@
             android:layout_alignParentBottom="true"
             android:layout_marginTop="150dp"
             android:layout_marginRight="10dp"
-            android:layout_marginBottom="150dp"
+            android:layout_marginBottom="100dp"
+            android:layout_marginLeft="250dp"
             android:background="#29b6f6"
-            android:text="History Parcel" />
+            android:text="History Parcels"
+            android:onClick="gotoHistoryParcel"/>
     </RelativeLayout>
 
 

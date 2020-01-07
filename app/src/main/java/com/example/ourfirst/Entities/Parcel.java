@@ -22,7 +22,6 @@ public class Parcel {
     private String toPhoneNumber;
     private String toMail;
     private SimpleDateFormat sendDate;
-
     private SimpleDateFormat reciviedDate;
     private Enumes.ParcelStatus parcelStatus;
     private String deliverName;
