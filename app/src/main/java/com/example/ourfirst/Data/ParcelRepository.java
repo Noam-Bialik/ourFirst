@@ -30,6 +30,7 @@ public class ParcelRepository {
 
     public MutableLiveData<List<Parcel>> getAllParcelsThat() {
         parcels.getValue();
+        //parcels= (MutableLiveData<List<Parcel>>) historyDataSourceDAO.getAllParcelsThat("WAITING");
         return parcels;
     }
 }
