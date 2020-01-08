@@ -26,15 +26,15 @@ public class AddParcelViewModel extends AndroidViewModel {
         parcelRepository=ParcelRepository.getInstance(getApplication());
     }
 
-    public void verifyData(String idStorage, int parcelType, int breakable, int weight, String storageLocation, String toName, String toLocation, String toPhoneNumber, String toMail) throws Exception {
+    public void verifyData(String warehouseID, int parcelType, int breakable, int weight, String warehouseLocation, String toName, String toLocation, String toPhoneNumber, String toMail) throws Exception {
         Parcel parcel = new Parcel();
         Date dateNow = new Date();
         SimpleDateFormat dt1 = new SimpleDateFormat("yyyy-MM-dd");
         dt1.set2DigitYearStart(dateNow);
         parcel.setReciviedDate(dt1);
         parcel.setSendDate(dt1);
-        parcel.setIdStorage(idStorage);
-        parcel.setStorageLocation(storageLocation);
+        parcel.setWarehouseID(warehouseID);
+        parcel.setWarehouseLocation(warehouseLocation);
         parcel.setDeliverName("");
 
         parcel.setParcelStatus(Enumes.ParcelStatus.WAITING);
@@ -69,7 +69,6 @@ public class AddParcelViewModel extends AndroidViewModel {
         {
             Location location=GPService.getLocationFromAddress(toLocation, context);
             parcel.setToLocation(location);
-            //need check;
         }
         catch (Exception e) {
             throw new Exception("The location is not correct");

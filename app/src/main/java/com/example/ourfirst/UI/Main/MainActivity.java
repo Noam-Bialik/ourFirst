@@ -30,8 +30,8 @@ public class MainActivity extends Activity {
         if (sharedpreferences.getString("Location", "")!=""&&sharedpreferences.getString("ID", "")!="") {
 
             Intent intent=new Intent(this, PostMainActivity.class);
-            intent.putExtra("StorageLocation",sharedpreferences.getString("Location", ""));
-            intent.putExtra("ID",sharedpreferences.getString("ID", ""));
+            intent.putExtra("WarehouseLocation",sharedpreferences.getString("Location", ""));
+            intent.putExtra("WarehouseID",sharedpreferences.getString("ID", ""));
             startActivity(intent);
 
             Toast.makeText(getApplicationContext(), "Warehouse Data saved successfully", Toast.LENGTH_SHORT).show();
@@ -47,10 +47,10 @@ public class MainActivity extends Activity {
         editor.commit();
 
         Intent intent=new Intent(this, PostMainActivity.class);
-        intent.putExtra("StorageLocation",sharedpreferences.getString("Location", ""));
-        intent.putExtra("ID",sharedpreferences.getString("ID", ""));
+        intent.putExtra("WarehouseLocation",sharedpreferences.getString("Location", ""));
+        intent.putExtra("WarehouseID",sharedpreferences.getString("ID", ""));
         startActivity(intent);
 
-        Toast.makeText(getApplicationContext(), "Storage data saved", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Warehouse data saved", Toast.LENGTH_SHORT).show();
     }
 }

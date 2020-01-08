@@ -6,7 +6,6 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.ourfirst.R;
 
 public class AddParcelActivity extends AppCompatActivity {
@@ -26,16 +25,16 @@ public class AddParcelActivity extends AppCompatActivity {
         String toPhoneNumber;
         String toMail;
         try {
-            parcelType = ((RadioGroup) findViewById(R.id.Type)).indexOfChild(findViewById(((RadioGroup) findViewById(R.id.Type)).getCheckedRadioButtonId()));
+            parcelType = ((RadioGroup) findViewById(R.id.ParcelType)).indexOfChild(findViewById(((RadioGroup) findViewById(R.id.ParcelType)).getCheckedRadioButtonId()));
             breakable = ((RadioGroup) findViewById(R.id.Breakable)).indexOfChild(findViewById(((RadioGroup) findViewById(R.id.Breakable)).getCheckedRadioButtonId()));
             weight = ((RadioGroup) findViewById(R.id.Weight)).indexOfChild(findViewById(((RadioGroup) findViewById(R.id.Weight)).getCheckedRadioButtonId()));
             toName = ((EditText) findViewById(R.id.ToName)).getText().toString();
-            toLocation = ((EditText) findViewById(R.id.DestenationLocation)).getText().toString();
+            toLocation = ((EditText) findViewById(R.id.ToLocation)).getText().toString();
             toPhoneNumber = ((EditText) findViewById(R.id.PhoneNumber)).getText().toString();
-            toMail = ((EditText) findViewById(R.id.DdestenationMail)).getText().toString();
+            toMail = ((EditText) findViewById(R.id.ToMail)).getText().toString();
 
-            final String storageLocation = getIntent().getStringExtra("StorageLocation");
-            final String idStorage = getIntent().getStringExtra("ID");
+            final String storageLocation = getIntent().getStringExtra("WarehouseLocation");
+            final String idStorage = getIntent().getStringExtra("WarehouseID");
             addParcelViewModel=new AddParcelViewModel(getApplication());
             addParcelViewModel.verifyData(idStorage, parcelType, breakable, weight, storageLocation, toName, toLocation, toPhoneNumber, toMail);
             Toast.makeText(AddParcelActivity.this,"Parcel added successfully", Toast.LENGTH_SHORT).show();

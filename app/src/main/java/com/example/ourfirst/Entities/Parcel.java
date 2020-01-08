@@ -13,28 +13,28 @@ public class Parcel {
     @PrimaryKey(autoGenerate = true)
     @NonNull
     private int ID;
+    private String warehouseID;
+    private String warehouseLocation;
+    private Enumes.ParcelStatus parcelStatus;
     private Enumes.ParcelType parcelType;
     private Boolean breakable;
     private Enumes.Weight weight;
-    private String storageLocation;
     private String toName;
     private Location toLocation;
     private String toPhoneNumber;
     private String toMail;
     private SimpleDateFormat sendDate;
     private SimpleDateFormat reciviedDate;
-    private Enumes.ParcelStatus parcelStatus;
     private String deliverName;
-    private String idStorage;
 
     public Parcel() {
     }
 
-    public Parcel(Enumes.ParcelType parcelType, Boolean breakable, Enumes.Weight weight, String storageLocation, String toName, Location toLocation, String toPhoneNumber, String toMail, SimpleDateFormat sendDate, SimpleDateFormat reciviedDate, Enumes.ParcelStatus parcelStatus, String deliverName, String idStorage) {
+    public Parcel(Enumes.ParcelType parcelType, Boolean breakable, Enumes.Weight weight, String warehouseLocation, String toName, Location toLocation, String toPhoneNumber, String toMail, SimpleDateFormat sendDate, SimpleDateFormat reciviedDate, Enumes.ParcelStatus parcelStatus, String deliverName, String warehouseID) {
         this.parcelType = parcelType;
         this.breakable = breakable;
         this.weight = weight;
-        this.storageLocation = storageLocation;
+        this.warehouseLocation = warehouseLocation;
         this.toName = toName;
         this.toLocation = toLocation;
         this.toPhoneNumber = toPhoneNumber;
@@ -43,7 +43,7 @@ public class Parcel {
         this.reciviedDate = reciviedDate;
         this.parcelStatus = parcelStatus;
         this.deliverName = deliverName;
-        this.idStorage = idStorage;
+        this.warehouseID = warehouseID;
     }
 
     public int getID() {
@@ -78,12 +78,12 @@ public class Parcel {
         this.weight = weight;
     }
 
-    public String getStorageLocation() {
-        return storageLocation;
+    public String getWarehouseLocation() {
+        return warehouseLocation;
     }
 
-    public void setStorageLocation(String storageLocation) {
-        this.storageLocation = storageLocation;
+    public void setWarehouseLocation(String warehouseLocation) {
+        this.warehouseLocation = warehouseLocation;
     }
 
     public String getToName() {
@@ -150,11 +150,11 @@ public class Parcel {
         this.deliverName = deliverName;
     }
 
-    public String getIdStorage() {
-        return idStorage;
+    public String getWarehouseID() {
+        return warehouseID;
     }
 
-    public void setIdStorage(String idStorage) {
-        this.idStorage = idStorage;
+    public void setWarehouseID(String idStorage) {
+        this.warehouseID = idStorage;
     }
 }

@@ -57,19 +57,19 @@ public class HistoryParcelsActivity extends AppCompatActivity {
         AlertDialog alertDialog = new AlertDialog.Builder(HistoryParcelsActivity.this).create();
         alertDialog.setTitle("ditels of parcel");
         String str="ID: "+parcel.getID() +
-                "\nidstorage: "+parcel.getIdStorage()+
-                "\nstorageLocation: "+parcel.getStorageLocation()+
-                "\nparcelType: "+parcel.getParcelType().toString()+"" +
-                "\nbreakable: "+parcel.getBreakable().toString()+
-                "\nweight: "+parcel.getWeight().toString()+
-                "\nparcelStatus: "+parcel.getParcelStatus()+
-                "\nreciviedDate: "+parcel.getReciviedDate().format(cal.getTime())+
-                "\nsendDate: "+parcel.getSendDate().format(cal.getTime())+
-                "\ntoLocation: "+converters.locationToDatabase(parcel.getToLocation())+
-                "\ntomail: "+parcel.getToMail()+
-                "\ntoname: "+parcel.getToName()+
+                "\nWarehouseID: "+parcel.getWarehouseID()+
+                "\nWarehouseLocation: "+parcel.getWarehouseLocation()+
+                "\nParcelType: "+parcel.getParcelType().toString()+"" +
+                "\nBreakable: "+parcel.getBreakable().toString()+
+                "\nWeight: "+parcel.getWeight().toString()+
+                "\nParcelStatus: "+parcel.getParcelStatus()+
+                "\nReciviedDate: "+parcel.getReciviedDate().format(cal.getTime())+
+                "\nSendDate: "+parcel.getSendDate().format(cal.getTime())+
+                "\nToLocation: "+converters.locationToDatabase(parcel.getToLocation())+
+                "\nTomail: "+parcel.getToMail()+
+                "\nToname: "+parcel.getToName()+
                 "\nTophoneNumber: "+parcel.getToPhoneNumber()+
-                "\ndeliverName: "+parcel.getDeliverName();
+                "\nDeliverName: "+parcel.getDeliverName();
         alertDialog.setMessage(str);
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {

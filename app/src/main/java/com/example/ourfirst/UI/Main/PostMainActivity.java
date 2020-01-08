@@ -18,8 +18,8 @@ public class PostMainActivity extends AppCompatActivity {
     public void gotoAddParcel(View view)
     {
         Intent intent=new Intent(this, AddParcelActivity.class);
-        intent.putExtra("StorageLocation",getIntent().getExtras().getString("StorageLocation"));
-        intent.putExtra("ID",getIntent().getExtras().getString("ID"));
+        intent.putExtra("WarehouseLocation",getIntent().getExtras().getString("Location"));
+        intent.putExtra("WarehouseID",getIntent().getExtras().getString("ID"));
         startActivity(intent);
     }
     public void gotoHistoryParcel(View view)
