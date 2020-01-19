@@ -131,6 +131,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Enter toName here."
+            android:text="נוה"
             android:inputType="text"/>
 
     </LinearLayout>
@@ -148,6 +149,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Enter toLocation here."
+            android:text="השיר 29 ברוכין"
             android:inputType="text"/>
 
     </LinearLayout>
@@ -167,6 +169,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Enter toPhoneNumber here."
+            android:text="+972528616878"
             android:inputType="phone"/>
 
     </LinearLayout>
@@ -184,7 +187,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Enter toMail here."
-            android:inputType="textEmailAddress"/>
+            android:text="navesarussi@gmail.com"
+            android:inputType="textEmailAddress"
+            />
 
     </LinearLayout>
 

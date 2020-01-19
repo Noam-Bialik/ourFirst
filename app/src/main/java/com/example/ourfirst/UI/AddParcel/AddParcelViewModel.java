@@ -3,6 +3,7 @@ package com.example.ourfirst.UI.AddParcel;
 import android.app.Application;
 import android.content.Context;
 import android.location.Location;
+import android.telephony.SmsManager;
 import android.widget.Toast;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
@@ -19,7 +20,7 @@ import java.util.Date;
 public class AddParcelViewModel extends AndroidViewModel {
     Context context;
     ParcelRepository parcelRepository;
-
+    static Parcel parcel;
     public AddParcelViewModel(Application application) {
         super(application);
         context=application.getApplicationContext();
@@ -27,7 +28,7 @@ public class AddParcelViewModel extends AndroidViewModel {
     }
 
     public void verifyData(String warehouseID, int parcelType, int breakable, int weight, String warehouseLocation, String toName, String toLocation, String toPhoneNumber, String toMail) throws Exception {
-        Parcel parcel = new Parcel();
+        parcel = new Parcel();
         Date dateNow = new Date();
         SimpleDateFormat dt1 = new SimpleDateFormat("yyyy-MM-dd");
         dt1.set2DigitYearStart(dateNow);
@@ -60,8 +61,7 @@ public class AddParcelViewModel extends AndroidViewModel {
 
         if (toPhoneNumber.length()>1) {
             parcel.setToPhoneNumber(toPhoneNumber);
-            //we verify main her
-        }
+             }
         else throw new Exception("The toPhoneNumber is not correct");
 
 
@@ -74,6 +74,13 @@ public class AddParcelViewModel extends AndroidViewModel {
             throw new Exception("The location is not correct");
         }
         parcelRepository.addParcel(parcel);
-        Toast.makeText(context, "Add parcel successfuly", Toast.LENGTH_SHORT).show();
+    }
+    public void addParcelToRoom()
+    {
+        parcelRepository.addParcelToRoom(parcel);
+    }
+    public MutableLiveData<Boolean>getSuccess()
+    {
+        return parcelRepository.getSuccess();
     }
 }

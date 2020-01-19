@@ -17,12 +17,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter warehouse address"
+        android:text="הועד הלאומי 21"
         />
     <EditText
         android:id="@+id/warehouseID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter warehouse ID"
+        android:text="1"
         android:inputType="phone" />
 
     <LinearLayout

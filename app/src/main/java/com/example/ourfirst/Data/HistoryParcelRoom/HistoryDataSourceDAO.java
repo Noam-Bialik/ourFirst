@@ -22,4 +22,6 @@ public interface HistoryDataSourceDAO {
     @Query("SELECT * FROM parcels")
     List<Parcel> getAllParcelsThat();
 
+    @Query("SELECT * FROM parcels WHERE ID=:id")
+    Parcel queryRemove(int id);
 }

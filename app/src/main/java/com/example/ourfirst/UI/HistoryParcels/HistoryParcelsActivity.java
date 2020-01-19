@@ -19,14 +19,16 @@ import java.util.Calendar;
 import java.util.List;
 
 public class HistoryParcelsActivity extends AppCompatActivity {
+
     ArrayList<String> allParcelsThat = new ArrayList<>();
     HistoryParcelsViewModel historyParcelsViewModel;
     Converters converters=new Converters();
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.history_parcels_activity);
-        historyParcelsViewModel=new HistoryParcelsViewModel(getApplication());
+       historyParcelsViewModel=new HistoryParcelsViewModel(getApplication());
 
 
         historyParcelsViewModel.getAllParcelsThat().observe(this, new Observer<List<Parcel>>() {
@@ -43,7 +45,6 @@ public class HistoryParcelsActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         onParcelClick(parcelList.get(position));
-
                     }
                 });
             }

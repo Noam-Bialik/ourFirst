@@ -6,11 +6,13 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.example.ourfirst.Utils.Converters;
+
 import java.text.SimpleDateFormat;
 
 @Entity(tableName = "Parcels")
 public class Parcel {
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = false)
     @NonNull
     private int ID;
     private String warehouseID;
@@ -28,6 +30,26 @@ public class Parcel {
     private String deliverName;
 
     public Parcel() {
+    }
+    public Parcel(FireParcel parcel) {
+        this.ID = parcel.getID();
+        this.warehouseID = parcel.getWarehouseID();
+        this.warehouseLocation =parcel.getWarehouseLocation() ;
+        this.parcelStatus = parcel.getParcelStatus();
+        this.parcelType = parcel.getParcelType();
+        this.breakable = parcel.getBreakable();
+        this.weight = parcel.getWeight();
+        this.toName = parcel.getToName();
+        this.toLocation = new Location("");
+        this.toLocation.setLatitude(parcel.getLa());
+        this.toLocation.setLongitude(parcel.getLo());
+        this.toPhoneNumber = parcel.getToPhoneNumber();
+        this.toMail = parcel.getToMail();
+        Converters a = new Converters();
+
+        this.sendDate = a.dateFromDatabase( parcel.getSendDate());
+        this.reciviedDate =a.dateFromDatabase( parcel.getReciviedDate());
+        this.deliverName = parcel.getDeliverName();
     }
 
     public Parcel(Enumes.ParcelType parcelType, Boolean breakable, Enumes.Weight weight, String warehouseLocation, String toName, Location toLocation, String toPhoneNumber, String toMail, SimpleDateFormat sendDate, SimpleDateFormat reciviedDate, Enumes.ParcelStatus parcelStatus, String deliverName, String warehouseID) {
@@ -49,6 +71,8 @@ public class Parcel {
     public int getID() {
         return ID;
     }
+
+
 
     public void setID(int ID) {
         this.ID = ID;
