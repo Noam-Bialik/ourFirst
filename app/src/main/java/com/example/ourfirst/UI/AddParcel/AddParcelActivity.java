@@ -53,7 +53,7 @@ public class AddParcelActivity extends AppCompatActivity {
                             if(aBoolean)
                             {
                             Toast.makeText(getApplicationContext(), "Add parcel successfuly", Toast.LENGTH_SHORT).show();
-                            addParcelViewModel.addParcelToRoom();
+                            addParcelViewModel.addParcelToRoom();//
                             SmsManager smgr = SmsManager.getDefault();
                             smgr.sendTextMessage(toPhoneNumber,"The Warehouse","Hello customer, your package has arrived at the warehouse",null,null);
                             finish();
