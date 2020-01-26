@@ -28,7 +28,7 @@ public class HistoryParcelsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.history_parcels_activity);
-       historyParcelsViewModel=new HistoryParcelsViewModel(getApplication());
+        historyParcelsViewModel=new HistoryParcelsViewModel(getApplication());
 
 
         historyParcelsViewModel.getAllParcelsThat().observe(this, new Observer<List<Parcel>>() {
@@ -74,7 +74,7 @@ public class HistoryParcelsActivity extends AppCompatActivity {
         alertDialog.setMessage(str);
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
-            dialog.dismiss();
+                dialog.dismiss();
             }
         });
 

@@ -71,7 +71,7 @@ public class AddParcelViewModel extends AndroidViewModel {
             parcel.setToLocation(location);
         }
         catch (Exception e) {
-            throw new Exception("The location is not correct");
+            throw new Exception("The location is not correct or your offline");
         }
         parcelRepository.addParcel(parcel);
     }

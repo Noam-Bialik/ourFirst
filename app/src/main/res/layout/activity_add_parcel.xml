@@ -149,7 +149,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Enter toLocation here."
-            android:text="השיר 29 ברוכין"
+            android:text="יפו 6 ירושלים"
             android:inputType="text"/>
 
     </LinearLayout>

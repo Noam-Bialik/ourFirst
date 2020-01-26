@@ -50,13 +50,12 @@ public class GPService {
         return locationstr;
     }
 
-    public static Location getLocationFromAddress(String strAddress , Context context) {
+    public static Location getLocationFromAddress(String strAddress , Context context) throws Exception {
 
         //    Geocoder coder = new Geocoder(this);
         Geocoder coder = new Geocoder(context,  new Locale("he"));
         List<Address> address;
 
-        try {
             address = coder.getFromLocationName(strAddress, 1);
             if (address == null) {
                 return null;
@@ -68,9 +67,5 @@ public class GPService {
             object.setLongitude(lng);
             object.setLatitude(lat);
             return object;
-        }
-        catch (Exception e) {
-            return null;
-        }
     }
 }

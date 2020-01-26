@@ -12,14 +12,14 @@ import java.util.ArrayList;
 
 public class HistoryParcelsViewModel extends AndroidViewModel
 {
-    ParcelRepository parcelRepository=ParcelRepository.getInstance(getApplication());
+  ParcelRepository parcelRepository=ParcelRepository.getInstance(getApplication());
 
-    public HistoryParcelsViewModel(Application application)
-    {
-        super(application);
-    }
-    public MutableLiveData<ArrayList<Parcel>> getAllParcelsThat()
-    {
-       return parcelRepository.getAllParcelsThat();
-    }
+  public HistoryParcelsViewModel(Application application)
+  {
+    super(application);
+  }
+  public MutableLiveData<ArrayList<Parcel>> getAllParcelsThat()
+  {
+    return parcelRepository.getAllParcelsThat();
+  }
 }

@@ -8,7 +8,11 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.ourfirst.Entities.FireParcel;
 import com.example.ourfirst.Entities.Parcel;
+import com.google.android.gms.tasks.OnCanceledListener;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -16,13 +20,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+
 public class HistoryParcelsFirebase {
 
     private static DatabaseReference parcelsRef = FirebaseDatabase.getInstance().getReference("Parcels");
     private static DatabaseReference maxParcelIDIDRef = FirebaseDatabase.getInstance().getReference("maxParcelID");
-    private static String ID = "0";
+    private static String ID = "";
     private static int maxParcelID = 0;
     static MutableLiveData<Boolean> success =new MutableLiveData<Boolean>();
+    private static boolean upDateing=false;
 
     public static String getID() {
         return ID;
@@ -43,25 +50,49 @@ public class HistoryParcelsFirebase {
     }
 
 
-    public void addParcelToFirebase(final Parcel parcel){
-        if (parcel.getID() <= maxParcelID){
-            maxParcelID = maxParcelID+1;
-            parcel.setID(maxParcelID);
-        }
-        success.postValue(false);
-        parcel.setWarehouseID(ID);
-            maxParcelIDIDRef.setValue(maxParcelID).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                FireParcel a = new FireParcel(parcel);
-                parcelsRef.child(String.valueOf(parcel.getID())).setValue(a).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        success.setValue(true);
-                    }
-                });
+    public void addParcelToFirebase(final Parcel parcel) throws Exception {
+        if(upDateing) {
+            if (parcel.getID() <= maxParcelID) {
+                maxParcelID = maxParcelID + 1;
+                parcel.setID(maxParcelID);
             }
-        });
+            //success.postValue(false);
+            maxParcelIDIDRef.setValue(maxParcelID).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    FireParcel a = new FireParcel(parcel);
+
+                    parcelsRef.child(String.valueOf(parcel.getID())).setValue(a).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            success.postValue(true);
+                        }
+
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            success.postValue(false);
+                        }
+                    }).addOnCanceledListener(new OnCanceledListener() {
+                        @Override
+                        public void onCanceled() {
+                            success.postValue(false);
+                        }
+                    }).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            success.postValue(true);
+                        }
+                    });
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    success.setValue(false);
+                }
+            });
+        }
+        else throw new Exception("מסתנכרן אנא המתינו כמה דקות");
     }
 
     public static void notifyToParcelList(final CallBacks callBacks ){
@@ -128,7 +159,10 @@ public class HistoryParcelsFirebase {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists())
+                {
                     maxParcelID = dataSnapshot.getValue(int.class);
+                    upDateing=true;
+                }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {

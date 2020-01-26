@@ -84,7 +84,7 @@ public class ParcelRepository {
     //send to the firebase and in the firebase it will get unique id.
     public void addParcel(final Parcel parcel) throws Exception
     {
-            historyParcelsFirebase.addParcelToFirebase(parcel);
+           historyParcelsFirebase.addParcelToFirebase(parcel);
            getSuccess();
     }
     public MutableLiveData<Boolean>getSuccess()
@@ -147,5 +147,7 @@ public class ParcelRepository {
     public void addParcelToRoom(Parcel parcel)
     {
         historyDataSourceDAO.addParcel(parcel);
+        if (parcels.getValue().size()<=historyParcelsFirebase.getMaxParcelIDFromFirebase())
+            addParcelToParcelsArrayList(parcel);
     }
 }
